@@ -2,19 +2,19 @@
 
 这里使用的pdf解析工具主要为**pdfplumber**，但是直接使用pdfplumber的效果并不够理想。例如对于下面一个pdf：
 
-![image-20230804165608718](.\images\image-20230804165608718.png)
+![image-20230804165608718](images/image-20230804165608718.png)
 
 如果直接使用pdfplumber而不做其他处理，提取出的文字会保持原来的排版，导致语义上的混乱。
 
-![image-20230804170322266](.\images\image-20230804170322266.png)
+![image-20230804170322266](images/image-20230804170322266.png)
 
 而且pdfplumber对表格的识别能力较为有限，只能识别出非常规范的表格，对于缺少部分框线的表格，只能识别一部分内容或者无法识别。例如下面pdf中的表格，pdfplumber只能识别出一部分。
 
-![image-20230804172859649](.\images\image-20230804172859649.png)
+![image-20230804172859649](images/image-20230804172859649.png)
 
 识别结果：
 
-![image-20230804171858426](.\images\image-20230804171858426.png)
+![image-20230804171858426](images/image-20230804171858426.png)
 
 因此，需要使用更准确的表格识别方法，以及对提取的文本进行后处理。
 
@@ -71,7 +71,7 @@ python pdf2txt.py  /mnt/SSD_732G/lm_corpus/pdf /mnt/SSD_732G/lm_corpus/txt
 
 第一次运行会先自动下载要用的模型，如果网络不好会出现连接错误等问题，重新运行命令直到程序正常运行。显示下面的文字即运行成功。
 
-![image-20230804135406562](.\images\image-20230804135406562.png)
+![image-20230804135406562](images/image-20230804135406562.png)
 
 为了加快所有pdf的处理，可以根据实际CPU和GPU的使用情况，**修改输入路径，在多个终端中运行该程序，**同时处理不同批量的pdf。
 
@@ -122,7 +122,7 @@ pip install pdf2image
 
 该程序已使用多进程，根据要处理的pdf的数量以及要使用的进程数，修改程序中的batch_size，同时修改转换后的图片的存放路径。
 
-![image-20230804141744487](C:\Users\LEGION\Desktop\work\books_pt\pdf报告文本提取\images\image-20230804141744487.png)
+![image-20230804141744487](images/image-20230804141744487.png)
 
 batch_size的计算方法为
 $$
@@ -132,7 +132,7 @@ $$
 
 下面的文本failed_list.txt记录转换图片失败的pdf，根据实际情况进行修改，建议与文本放在同一位置。
 
-![image-20230804150553560](C:\Users\LEGION\Desktop\work\books_pt\pdf报告文本提取\images\image-20230804150553560.png)
+![image-20230804150553560](images/image-20230804150553560.png)
 
 
 
@@ -140,11 +140,11 @@ $$
 
 修改处理后文本的存放路径。
 
-![image-20230804143023254](C:\Users\LEGION\Desktop\work\books_pt\pdf报告文本提取\images\image-20230804143023254.png)
+![image-20230804143023254](images/image-20230804143023254.png)
 
 另外，这里的路径应与pdf2image.py里的路径保持相同。
 
-![image-20230804151146735](C:\Users\LEGION\Desktop\work\books_pt\pdf报告文本提取\images\image-20230804151146735.png)
+![image-20230804151146735](images/image-20230804151146735.png)
 
 
 
@@ -158,7 +158,7 @@ $$
 
 - 先在终端中运行命令：**python pdf2image.py input_dir**，其中input_dir为pdf的存放路径。
 
-![image-20230804144019815](C:\Users\LEGION\Desktop\work\books_pt\pdf报告文本提取\images\image-20230804144019815.png)
+![image-20230804144019815](images/image-20230804144019815.png)
 
 - **待pdf2image.py运行一段时间后，**在新的终端运行命令：**python image2txt.py**。由于image2txt.py只使用了单进程，可以根据实际情况，在多个终端中运行该命令，通过多个进程加快图片到文本的处理。**注意**，若消费者的进程过多，会提前取完缓冲区的内容而终止程序，但生产者可能还在继续运行。此时需要在终端中重新运行该命令。
 
