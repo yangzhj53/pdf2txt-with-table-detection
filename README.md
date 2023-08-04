@@ -164,5 +164,5 @@ $$
 
   若pdf2image.py运行结束，再次运行image2txt.py无输出，说明已经全部处理完毕。
 
-![image-20230804144102016](C:\Users\LEGION\Desktop\work\books_pt\pdf报告文本提取\images\image-20230804144102016.png)
+![image-20230804144102016](images/image-20230804144102016.png)
 
